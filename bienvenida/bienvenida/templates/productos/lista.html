@@ -6,15 +6,18 @@
 </head>
 
 <body>
-    <h1>Productos disponibles</h1>
+    <h1>Nuestros Productos</h1>
     <ul>
         {% for producto in productos %}
-        <li>{{ producto.nombre }} - ${{ producto.precio }} - {{ producto.stock }}</li>
-        {% if producto.stock > 0 %}
-        <span style="color: red;font-weight: 800; font-family: monospace;">Sin stock</span>
-        {% endif %}
+        <li>
+            {{ producto.nombre }} - {{ producto.precio }}¬
+            {% if producto.stock == 0 %}
+            <span style="color: red;"> (Agotado)</span>
+            {% endif %}
+        </li>
         {% empty %}
-        <img style="max-width: 100px; src: ;">
+
+        <li>No hay productos disponibles.</li>
         {% endfor %}
     </ul>
 </body>
