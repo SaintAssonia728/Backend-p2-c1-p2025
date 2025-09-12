@@ -1,0 +1,37 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}
+  👽 Listado productos
+{% endblock %}
+
+{% block header %}
+  <header class="w-full bg-red-600 text-white p-6 text-xl font-bold hover:bg-red-200">
+    <h1>Listado productos</h1>
+
+    <a href="{% url 'producto_create' %}">
+      Crear nuevo producto
+    </a>
+    
+  </header>
+{% endblock %}
+
+{% block main %}
+  <ul class="p-8 bg-gray-300 flex flex-col gap-6">
+    {% for producto in object_list %}
+      <li class="bg-white border border-gray-400 rounded shadow w-full flex gap-2 p-4 hover:bg-red-200 flex flex-col">
+        <span>{{ producto.nombre }}</span>
+        <span>{{ producto.descripcion }}</span>
+        <span>{{ producto.precio }}</span>
+        <span>{{ producto.stock }}</span>
+      </li>
+    {% empty %}
+    <p> No hay productos disponibles </p>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block footer %}
+  <footer>
+    <span>2025. Derechos reservados</span>
+  </footer>
+{% endblock %}
